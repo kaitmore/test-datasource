@@ -1,0 +1,23 @@
+# This workflow will do a clean install of node dependencies and build the source code
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+name: Run scrape data
+
+on:
+  # Runs on any commits to master
+  push:
+    branches: [ master ]
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out flux-covidapihub
+    - uses: actions/checkout@v2
+      with:
+        path: ${{ github.workspace }}/flux-covidapihub
+        token: ${{ secrets.DEPLOY_TOKEN }}
+    - name: Check out datasource
+      uses: actions/checkout@master
+      with:
+        path: ${{ github.workspace }}/test-datasource
+        repository: kaitmore/test-datasource
+    - run: ls
