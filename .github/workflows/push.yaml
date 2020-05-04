@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out flux-covidapihub
-    - uses: actions/checkout@v2
+      uses: actions/checkout@v2
       with:
         path: ${{ github.workspace }}/flux-covidapihub
         token: ${{ secrets.DEPLOY_TOKEN }}
